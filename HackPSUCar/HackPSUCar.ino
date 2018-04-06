@@ -5,7 +5,7 @@
 #include <Servo.h>
 
 // Define Sonar Params
-#define SONAR_NUM      3  // Number of sensors.
+#define SONAR_NUM      5  // Number of sensors.
 #define MAX_DISTANCE 200  // Maximum distance (in cm) to ping.
 #define PING_INTERVAL 50  // Milliseconds between sensor pings (29ms is about the min to avoid cross-sensor echo)
 
@@ -25,11 +25,11 @@ int x = 0;
 
 // Define sonar object array
 NewPing sonar[SONAR_NUM] = {   // Sensor object array.
-  //NewPing(2, 3, MAX_DISTANCE), // Each sensor's trigger pin, echo pin, and max distance to ping.
-  //NewPing(4, 5, MAX_DISTANCE),
-  NewPing(6, 7, MAX_DISTANCE),
+  NewPing(3, 2, MAX_DISTANCE), // Each sensor's trigger pin, echo pin, and max distance to ping.
+  NewPing(5, 4, MAX_DISTANCE),
+  NewPing(7, 6, MAX_DISTANCE),
   NewPing(12, 11, MAX_DISTANCE),
-  NewPing(8,13, MAX_DISTANCE)
+  NewPing(13, 8, MAX_DISTANCE)
 };
 
 // Create the initial servo commands
