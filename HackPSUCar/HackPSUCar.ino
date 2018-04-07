@@ -5,7 +5,7 @@
 #include <Servo.h>
 
 // Define Sonar Params
-#define SONAR_NUM      5  // Number of sensors.
+#define SONAR_NUM      6  // Number of sensors.
 #define MAX_DISTANCE 200  // Maximum distance (in cm) to ping.
 #define PING_INTERVAL 50  // Milliseconds between sensor pings (29ms is about the min to avoid cross-sensor echo)
 
@@ -29,6 +29,7 @@ NewPing sonar[SONAR_NUM] = {   // Sensor object array.
   NewPing(5, 4, MAX_DISTANCE),
   NewPing(7, 6, MAX_DISTANCE),
   NewPing(12, 11, MAX_DISTANCE),
+  NewPing(A5, A4, MAX_DISTANCE),
   NewPing(13, 8, MAX_DISTANCE)
 };
 
@@ -113,11 +114,12 @@ void loop()
     }
    }
    else{
-    /*if(stopped){                                                        // If stopped, then start the measurement
+    if(stopped){                                                        // If stopped, then start the measurement
+      stopped = 0;
       pingTimer[0] = millis();                                          // First timer is at millis
       for (uint8_t i = 0; i < SONAR_NUM; i++)                           // Run through sensor array
         if (i!=0) pingTimer[i] = pingTimer[i - 1] + PING_INTERVAL;      // Update Ping Timers
-    }*/
+    }
     if(x<SONAR_NUM){
       if (millis() >= pingTimer[x]) {                                   // Is it this sensor's time to ping?
         pingTimer[x] += PING_INTERVAL * SONAR_NUM;                      // Set next time this sensor will be pinged.
@@ -149,10 +151,27 @@ void echoCheck() {
 void oneSensorCycle() { // Sensor ping cycle complete, do something with the results.
   // The following code would be replaced with your code that does something with the ping results.
   for (int t = 0; t < SONAR_NUM; t++) {
-    Serial.print(t);
-    Serial.print("=");
+    switch(t){
+      case 0:
+        Serial.print("left = ");
+        break;
+      case 1:
+        Serial.print("right = ");
+        break;
+      case 2:
+        Serial.print("rear = ");
+        break;
+      case 3:
+        Serial.print("front left = ");
+        break;
+      case 4:
+        Serial.print("front right = ");
+        break;
+      case 5:
+        Serial.print("front center = ");
+        break;
+    }
     Serial.print(cm[t]);
-    Serial.print("cm");
+    Serial.println("cm ");
   }
-  Serial.println();
 }
