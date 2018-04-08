@@ -29,7 +29,7 @@ NewPing sonar[SONAR_NUM] = {   // Sensor object array.
   NewPing(5, 4, MAX_DISTANCE),
   NewPing(7, 6, MAX_DISTANCE),
   NewPing(12, 11, MAX_DISTANCE),
-  NewPing(A5, A4, MAX_DISTANCE),
+  NewPing(A3, A2, MAX_DISTANCE),
   NewPing(13, 8, MAX_DISTANCE)
 };
 
