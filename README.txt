@@ -4,7 +4,7 @@ If you need to find documentation for hardware, here are the components which we
 
 Truck: Traxxas Slash
 Arduino: Arduino Uno Rev 3
-Bluetooth Module: HC-04
+Bluetooth Module: HC-05
 Ultrasonic Sensors: HC-SR04
 Gesture/Light/Color/Prox sensor: APDS9960
 
